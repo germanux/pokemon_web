@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #fee445;
+}
+
+.sprite {
+    width: 100%;
+    background-color: #999999;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+image {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.seccion {
+    position: fixed;
+    display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    border: #fee445 60px solid;
+    border-image-source: url("../images/borde.png");
+    border-image-slice: 125 fill;
+}
+
+.borde {
+    width: 64px;
+    height: 64px;
+    position: fixed;
+}
+
+.borde-1 {
+    top: 0;
+    left: 0;
+}
+
+.borde-2 {
+    top: 0;
+    right: 0;
+}
+
+.borde-3 {
+    bottom: 0;
+    right: 0;
+}

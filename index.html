@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="seccion container">
+        <form id="form" class="row">
+        </form>
+    </section>
+    <!--   <div class="borde borde-1"><img src="images/borde_1.png" /></div>
+    <div class="borde borde-2"><img src="images/borde_2.png" /></div>
+    <div class="borde borde-3"> <img src="images/borde_3.png" /></div>
+    <div class="borde borde-4"> <img src="images/borde_4.png" /></div>
+-->
+    <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
+    <script>
+        var html = function(obj) {
+            return `
+<article id="plantilla" class="pokemon col-sm-4">
+    <figure>
+        <div class="sprite">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${obj.id}.png">
+        </div>
+        <figcaption>
+            <p>Nombre: <span>${obj.name}</span></p>
+        </figcaption>
+    </figure>
+</article>`;
+        }
+        class Pokemon {
+
+            constructor(numero) {
+                this.num = numero;
+            }
+            url() {
+                return `https://pokeapi.co/api/v2/pokemon/${this.num}`;
+            }
+            cargarJSON(json) {
+                this.datos = json;
+                this.nombre = this.datos.name;
+                var form = $("#form");
+                form.html(form.html() + html(json));
+            }
+        }
+        var form;
+        $(document).ready(() => {
+            var plantilla = $(document.getElementById("plantilla"));
+            var htmlPlantilla = plantilla.parent().html();
+            for (var i = 1; i < 50; i++) {
+                var otroPok = new Pokemon(i);
+                $.get(otroPok.url(), otroPok.cargarJSON);
+            }
+        })
+    </script>
+
+</body>
+
+</html>
